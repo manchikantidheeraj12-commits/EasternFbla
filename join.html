@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join • Eastern FBLA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-group">
+        <div style="padding:5px;"><img src="images/fblalogo.png" style="width: 76px; height: 76px;"></div>
+        <div>
+          <p class="eyebrow">Join the chapter</p>
+          <h1>Join page wireframe</h1>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="projects.html">Projects</a>
+        <a href="ask.html">Ask</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-panel reveal">
+        <div class="hero-copy">
+          <p class="label">Get involved</p>
+          <h2>Wireframe for membership and next steps</h2>
+          <p>Present clear application steps, contact details, and chapter benefits in a structured way.</p>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-card card-1">Why join</div>
+          <div class="visual-card card-2">How to apply</div>
+          <div class="visual-card card-3">Next events</div>
+        </div>
+      </section>
+
+      <section class="section-grid reveal">
+        <div>
+          <p class="eyebrow">Membership steps</p>
+          <h3>Structured onboarding for new members</h3>
+          <p>Use this page as a wireframe for FAQs, application milestones, and contact channels.</p>
+        </div>
+        <div class="stats-panel">
+          <div class="stat-block">
+            <span>Join</span>
+            <p>Fill out a quick interest form.</p>
+          </div>
+          <div class="stat-block">
+            <span>Attend</span>
+            <p>Join the next orientation meeting.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-panel reveal">
+        <div>
+          <p class="eyebrow">Connect now</p>
+          <h3>Membership wireframe with a clear call to action</h3>
+          <p>Show the most important next steps first: contact, event sign-ups, and membership benefits.</p>
+        </div>
+        <a class="btn primary large" href="mailto:join@example.com">Request Info</a>
+      </section>
+
+      <section class="survey-panel reveal">
+        <div class="survey-frame-wrap">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdnOrYzzJLXWCQHpI-P5XzpMHJTF1K2gIs0no0831XCeoxPA/viewform?embedded=true" width="640" height="3064" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer footer-wireframe">
+      <div class="footer-inner">
+        <div class="footer-col footer-brand">
+          <div class="logo-mark small">FBLA</div>
+          <p>Ready to join? Find next steps and contact info here.</p>
+        </div>
+        <div class="footer-col footer-links">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="projects.html">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <p>Email: <a href="mailto:join@example.com">join@example.com</a></p>
+        </div>
+        <div class="footer-col footer-news">
+          <h4>Newsletter</h4>
+          <form class="newsletter-form" action="#" onsubmit="return false;">
+            <input type="email" placeholder="you@example.com" aria-label="email" />
+            <button class="btn small primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year-join"></span> Eastern FBLA • Join</p>
+        <a class="top-link" href="index.html">Home</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const iframe = document.querySelector('.survey-frame-wrap iframe');
+      const originalSrc = iframe ? iframe.src : null;
+      const doneBtn = document.getElementById('survey-done');
+      const modal = document.getElementById('thankModal');
+      const closeBtn = document.getElementById('closeModal');
+
+      function showModal(){ if(!modal) return; modal.setAttribute('aria-hidden','false'); modal.classList.add('show'); }
+      function hideModal(){ if(!modal) return; modal.setAttribute('aria-hidden','true'); modal.classList.remove('show'); }
+
+      if(doneBtn){
+        doneBtn.addEventListener('click', function(){
+          if(iframe && originalSrc) iframe.src = originalSrc; // reset form by reloading iframe
+          showModal();
+          setTimeout(hideModal, 3000);
+        });
+      }
+      if(closeBtn) closeBtn.addEventListener('click', hideModal);
+
+      // set year
+      const y = new Date().getFullYear(); const yEl = document.getElementById('year-join'); if(yEl) yEl.textContent = y;
+    });
+  </script>
+  <script src="gallery.js" defer></script>
+</body>
+</html>
